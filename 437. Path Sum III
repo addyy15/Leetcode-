@@ -1,0 +1,26 @@
+class Solution {
+public:
+
+void  totalsum(TreeNode* root , long long target, int &count){
+    if(root ==NULL) return ;
+  
+ 
+ if((long long)root->val== target){
+        count++;
+         }
+     
+     
+totalsum(root->left, target-(long long)(root->val), count);
+    totalsum(root->right,target-(long long)(root->val),count);
+}
+    int pathSum(TreeNode* root, int targetSum) {
+       if(root==NULL) return 0;
+       int count=0;
+       totalsum(root,targetSum,count);
+       count=count+pathSum(root->left,targetSum) +  pathSum(root->right,targetSum);
+
+       return count;
+
+        
+    }
+};
